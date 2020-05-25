@@ -14,16 +14,21 @@ import fr.campus.warriors.contracts.WarriorsAPI;
 
 public class Warriors implements WarriorsAPI {
 	
+	protected Boolean debugMode = false;
 	private java.util.Map<String, GameStateTest> gameStateDictonary;
 	
-	 public Warriors() {
+	 public Warriors(Boolean debugMode) {
 		this.gameStateDictonary = new HashMap<String, GameStateTest>();
+		this.debugMode = debugMode;
 	}
 
 	@Override
 	public List<? extends Hero> getHeroes() {
 		// TODO Auto-generated method stub
-		return List.of(new Warrior(), new Wizard());
+		return HeroDao.getHeroes();
+		
+		class HeroDao { getHeroes() { // Connect à la table , la parcourir et renvoyer son contenu sous forme d'object de Type Warrior, Wizard, etc. } }
+		//return List.of(new Warrior(), new Wizard());
 	}
 
 	@Override
@@ -43,18 +48,23 @@ public class Warriors implements WarriorsAPI {
 
 	@Override
 	public GameState nextTurn(String gameID) {
+		int diceThrowResult;
+		System.out.println(debugMode);
+		if (debugMode == true) {
+			DiceCsv csv = new DiceCsv();
+//			csv.next();
+			
+			diceThrowResult = 1;
+		} else {
+			diceThrowResult = new Dice().diceThrow(1, 6);
+		}
 
-		int diceThrowResult = new Dice().diceThrow(1, 6);
+		
 	    
 	    GameStateTest game = gameStateDictonary.get(gameID);
 	    game.setPlayerPositionOnMap(diceThrowResult);
 	    
 		return game;
-	}
-
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
 	}
 
 }

@@ -5,8 +5,10 @@ public class Warrior extends Player {
 	private int maxAttackLevel;
 	private int lifePoint;
 	private int maxLifePoint;
+	private String name;
 	
 	public  Warrior() {
+		
 		this.attackLevel = 5;
 		this.lifePoint = 5;
 		this.maxAttackLevel = 10;
@@ -31,6 +33,18 @@ public class Warrior extends Player {
 	@Override
 	public int getAttackLevel() {
 		return attackLevel;
+	}
+	
+	public void setName1(String NewName) {
+		this.name = NewName;
+	}
+	
+	public void setLife1(int NewLife) {
+		this.lifePoint = NewLife;
+	}
+	
+	public void setAttack1(int NewAttack) {
+		this.attackLevel = NewAttack;
 	}
 
 	@Override

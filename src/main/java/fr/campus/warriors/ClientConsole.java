@@ -3,6 +3,12 @@ package fr.campus.warriors;
 import java.io.File;
 
 import java.io.FileNotFoundException;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -12,6 +18,9 @@ import fr.campus.warriors.contracts.GameStatus;
 import fr.campus.warriors.contracts.Hero;
 import fr.campus.warriors.contracts.Map;
 import fr.campus.warriors.contracts.WarriorsAPI;
+import fr.campus.warriors.engine.BddConnexion;
+import fr.campus.warriors.engine.Dice;
+import fr.campus.warriors.engine.DiceCsv;
 import fr.campus.warriors.engine.Warriors;
 
 public class ClientConsole {
@@ -20,8 +29,68 @@ public class ClientConsole {
 	private static String MENU_QUITTER = "2";
 
 	public static void main(String[] args) {
-				
-		WarriorsAPI warriors = new Warriors();
+		
+//        //create connection for a server installed in localhost, with a user "root" with no password
+//        try (Connection conn = DriverManager.getConnection("jdbc:mariadb://localhost/D&D_DB", "simoncocchi", "sangoten")) {
+//            // create a Statement
+//        	System.out.println("Ca ce connecte ?");
+//                      
+//                    Statement state = conn.createStatement();
+//                    
+//                    ResultSet result = state.executeQuery("SELECT * FROM hero");
+//                    //On récupère les MetaData
+//                    ResultSetMetaData resultMeta = result.getMetaData();
+//                    
+//                    //On affiche le nom des colonnes
+//                    for(int i = 1; i <= resultMeta.getColumnCount(); i++)
+//                      System.out.print("\t" + resultMeta.getColumnName(i).toUpperCase() + "\t");
+// 
+//                       
+//                    while(result.next()){         
+//                      for(int i = 1; i <= resultMeta.getColumnCount(); i++)
+//                        System.out.print("\t" + result.getObject(i).toString() + "\t");
+//                    }
+//                
+//        } catch (SQLException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+		
+		
+		try {
+			Connection conn = BddConnexion.getInstance();
+		
+			Statement state = conn.createStatement();
+			
+			ResultSet result = state.executeQuery("SELECT Nom, NiveauVie, NiveauForce FROM hero");
+			
+			ResultSetMetaData resultMeta = result.getMetaData();
+			
+			
+			
+			while(result.next()){   
+//				Hero h = new Hero(result.getString("Nom"), result.getInt("Attack"), etc.);
+		        System.out.println(result.getString("Nom"));
+		        
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+        
+	
+        
+		
+		System.out.println(args[0]);
+		WarriorsAPI warriors;
+		
+		if(args[0].equals("DEBUG")) {
+			warriors = new Warriors(true);
+		} else {
+			warriors = new Warriors(false);
+		}
+		
 		Scanner sc = new Scanner(System.in);
 		String menuChoice = "";
 		do {
