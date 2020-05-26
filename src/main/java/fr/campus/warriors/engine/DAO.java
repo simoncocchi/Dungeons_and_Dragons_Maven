@@ -1,6 +1,7 @@
 package fr.campus.warriors.engine;
 
 import java.sql.Connection;
+import java.util.List;
 
 public abstract class DAO<T> {
 	
@@ -37,5 +38,10 @@ public abstract class DAO<T> {
 	  * @return T
 	  */
 	  public abstract T find(int id);
-
+	  
+	  /**
+	  * Méthode de recherche des informations
+	  * @return T
+	  */
+	  public abstract List<T> findAll();
 }

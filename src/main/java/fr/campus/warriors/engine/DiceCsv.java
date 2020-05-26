@@ -13,13 +13,18 @@ public class DiceCsv extends Dice {
 	List<Integer> csvDiveValue;
 	private int index = 0;
 	
-	public DiceCsv() {
+	public DiceCsv(String path) {
 		File file = new File("src/main/resources/dice.csv"); // chemin vers le fichier csv de ta machine src/main/resources/dice.csv
 		System.out.println(file);
 //		this.csvDiveValue = file.toInteger();
 	}
-
-	public void next() {
+/**
+ * 
+ * @param i
+ * @return
+ */
+	public int diceThrow() {
+		return index;
 //		return this.csvDiveValue[index++];
 		
 	}

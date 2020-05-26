@@ -1,5 +1,7 @@
 package fr.campus.warriors.contracts;
 
+import java.util.ArrayList;
+
 /**
  * This interface contains all data needed by the client about the hero
  */

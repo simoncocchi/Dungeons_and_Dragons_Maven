@@ -13,14 +13,14 @@ public class BddConnexion {
 	  
 	  public static Connection getInstance(){
 		    if(connect == null){
-		    	System.out.println("Création de la connexion");
+		    	
 		      try {
 		        connect = DriverManager.getConnection(url, user, passwd);
 		      } catch (SQLException e) {
 		        e.printStackTrace();
 		      }
 		    } else {
-		    	System.out.println("Connexion déja existante");
+		    	
 		    }
 		    return connect;
 		  }   

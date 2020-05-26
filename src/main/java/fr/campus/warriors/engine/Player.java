@@ -3,29 +3,40 @@ package fr.campus.warriors.engine;
 import fr.campus.warriors.contracts.Hero;
 
 public abstract class Player implements Hero{
+	protected String name;
+	protected String image;
+	protected int attackLevel;
+	protected int maxAttackLevel;
+	protected int lifePoint;
+	protected int maxLifePoint;
+	
+	public Player(String name, String image, int attackLevel, int maxAttackLevel, int lifePoint, int maxLifePoint) {
+		this.name = name;
+		this.attackLevel = attackLevel;
+		this.image = image;
+		this.maxAttackLevel = maxAttackLevel;
+		this.lifePoint = lifePoint;
+		this.maxLifePoint = maxLifePoint;
+	}
 
 	@Override
 	public String getName() {
-		// TODO Auto-generated method stub
-		return null;
+		return name;
 	}
 
 	@Override
 	public String getImage() {
-		// TODO Auto-generated method stub
-		return null;
+		return image;
 	}
 
 	@Override
 	public int getLife() {
-		// TODO Auto-generated method stub
-		return 0;
+		return lifePoint;
 	}
 
 	@Override
 	public int getAttackLevel() {
-		// TODO Auto-generated method stub
-		return 0;
+		return attackLevel;
 	}
 
 	public abstract void setWeapon(int weaponDammage, String weaponClass);

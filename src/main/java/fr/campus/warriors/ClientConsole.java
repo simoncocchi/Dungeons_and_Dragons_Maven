@@ -28,59 +28,7 @@ public class ClientConsole {
 	private static String MENU_COMMENCER_PARTIE = "1";
 	private static String MENU_QUITTER = "2";
 
-	public static void main(String[] args) {
-		
-//        //create connection for a server installed in localhost, with a user "root" with no password
-//        try (Connection conn = DriverManager.getConnection("jdbc:mariadb://localhost/D&D_DB", "simoncocchi", "sangoten")) {
-//            // create a Statement
-//        	System.out.println("Ca ce connecte ?");
-//                      
-//                    Statement state = conn.createStatement();
-//                    
-//                    ResultSet result = state.executeQuery("SELECT * FROM hero");
-//                    //On récupère les MetaData
-//                    ResultSetMetaData resultMeta = result.getMetaData();
-//                    
-//                    //On affiche le nom des colonnes
-//                    for(int i = 1; i <= resultMeta.getColumnCount(); i++)
-//                      System.out.print("\t" + resultMeta.getColumnName(i).toUpperCase() + "\t");
-// 
-//                       
-//                    while(result.next()){         
-//                      for(int i = 1; i <= resultMeta.getColumnCount(); i++)
-//                        System.out.print("\t" + result.getObject(i).toString() + "\t");
-//                    }
-//                
-//        } catch (SQLException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-		
-		
-		try {
-			Connection conn = BddConnexion.getInstance();
-		
-			Statement state = conn.createStatement();
-			
-			ResultSet result = state.executeQuery("SELECT Nom, NiveauVie, NiveauForce FROM hero");
-			
-			ResultSetMetaData resultMeta = result.getMetaData();
-			
-			
-			
-			while(result.next()){   
-//				Hero h = new Hero(result.getString("Nom"), result.getInt("Attack"), etc.);
-		        System.out.println(result.getString("Nom"));
-		        
-			}
-			
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-        
-	
-        
+	public static void main(String[] args) {       
 		
 		System.out.println(args[0]);
 		WarriorsAPI warriors;

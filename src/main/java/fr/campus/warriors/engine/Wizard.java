@@ -1,39 +1,12 @@
 package fr.campus.warriors.engine;
 
 public class Wizard extends Player {
-	private int attackLevel;
-	private int maxAttackLevel;
-	private int lifePoint;
-	private int maxLifePoint;
 	
-	public  Wizard() {
-		this.attackLevel = 8;
-		this.lifePoint = 3;
-		this.maxAttackLevel = 15;
-		this.maxLifePoint = 6;
+	public  Wizard(String Name, String URL, int life, int maxLife, int strength, int maxStrength) {
+		super(Name, URL, life, maxLife, strength, maxStrength);
 	}
 
-	
 
-	@Override
-	public String getName() {
-		return "Super Mage";
-	}
-
-	@Override
-	public String getImage() {
-		return "Url de Super Mage";
-	}
-
-	@Override
-	public int getLife() {
-		return lifePoint;
-	}
-
-	@Override
-	public int getAttackLevel() {
-		return attackLevel;
-	}
 	
 	@Override
 	public void setWeapon(int weaponDammage, String weaponClass) {

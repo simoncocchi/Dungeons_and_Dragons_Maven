@@ -1,0 +1,1 @@
+memberSearchIndex = [{"p":"fr.campus.warriors.engine","c":"DiceCsv","l":"DiceCsv()","url":"%3Cinit%3E()"},{"p":"fr.campus.warriors.engine","c":"DiceCsv","l":"next(int)"}]

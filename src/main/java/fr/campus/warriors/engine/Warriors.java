@@ -24,11 +24,10 @@ public class Warriors implements WarriorsAPI {
 
 	@Override
 	public List<? extends Hero> getHeroes() {
-		// TODO Auto-generated method stub
-		return HeroDao.getHeroes();
-		
-		class HeroDao { getHeroes() { // Connect à la table , la parcourir et renvoyer son contenu sous forme d'object de Type Warrior, Wizard, etc. } }
-		//return List.of(new Warrior(), new Wizard());
+		PlayerDAO characterelist = new PlayerDAO(BddConnexion.getInstance());
+//		
+//		class HeroDao { getHeroes() { // Connect à la table , la parcourir et renvoyer son contenu sous forme d'object de Type Warrior, Wizard, etc. } }
+		return  characterelist.findAll();
 	}
 
 	@Override
@@ -42,6 +41,7 @@ public class Warriors implements WarriorsAPI {
 		GameStateTest game = new GameStateTest(playerName,(Player) hero,(BasicMap) map);
 		
 		this.gameStateDictonary.put(game.getGameId() ,game);
+//		this.dice = ??;
 
 		return game;
 	}
@@ -49,16 +49,16 @@ public class Warriors implements WarriorsAPI {
 	@Override
 	public GameState nextTurn(String gameID) {
 		int diceThrowResult;
-		System.out.println(debugMode);
+		/*System.out.println(debugMode);
 		if (debugMode == true) {
 			DiceCsv csv = new DiceCsv();
 //			csv.next();
 			
 			diceThrowResult = 1;
-		} else {
-			diceThrowResult = new Dice().diceThrow(1, 6);
-		}
-
+		} else {*/
+//			diceThrowResult = this.dice.next(); //new Dice().diceThrow(1, 6);
+		//}
+		diceThrowResult = new Dice().diceThrow(1, 6);
 		
 	    
 	    GameStateTest game = gameStateDictonary.get(gameID);
